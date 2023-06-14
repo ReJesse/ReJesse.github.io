@@ -1,0 +1,42 @@
+---
+layout: page
+# The Home page layout
+---
+
+{% assign pinned = site.posts | where: "pin", "true" %}
+{% assign default = site.posts | where_exp: "item", "item.pin != true and item.hidden != true" %}
+
+
+<div id="post-list">
+
+  <div class="overlay"></div>
+  <!-- <div class="post-preview">
+
+    <div class="post-content">
+      <p>
+        {% include no-linenos.html content=post.content %}
+        {{ content | markdownify | strip_html | truncate: 200 | escape }}
+      </p>
+    </div>
+
+  </div>  -->
+  <!-- .post-review -->
+
+  <!-- <div class="post-meta text-muted d-flex"> -->
+  <div class="content section-padding valign" style="margin-left: 10%; margin-top: 100px; text-align: center">
+    <h1>
+      <span style="font-family: 'Pacifico', cursive; font-size: 50px;">
+        I'm Wen
+      </span>
+
+      <p style="font-family:'Times New Roman'; font-size: 20px; margin-top: 20px;">
+        <i>"The best preparation for tomorrow is doing your best today."</i>
+      </p>
+    </h1>
+  </div>
+
+</div> <!-- #post-list -->
+
+{% if paginator.total_pages > 0 %}
+  {% include post-paginator.html %}
+{% endif %}
